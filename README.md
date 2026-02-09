@@ -1,143 +1,50 @@
-# MATAMU
+# Geocode3321: Business Location Verification Tool
 
-**MATAMU = MApping Alamat Tanpa MUmet 😆**
+Tools ini dirancang untuk memverifikasi lokasi usaha berdasarkan nama dan alamat menggunakan kombinasi **Google Maps** dan **Analisis Spasial (Peta Digital/SHP)**.
 
-MATAMU merupakan aplikasi otomatisasi untuk mengubah alamat menjadi koordinat (**Geocoding**) dengan memanfaatkan data dari **Google Maps**.
+## Fitur Utama
 
-Aplikasi ini menggunakan **Selenium** sebagai alternatif dari **Google Geocoding API** yang memiliki limit pada versi gratis (±10.000 request per bulan).  
-Dengan tools ini, request dapat dilakukan tanpa batasan kuota API.
+1.  **Automated Geocoding**: Mencari lokasi usaha secara otomatis menggunakan Selenium (Google Maps).
+2.  **Spatial Fallback**: Jika lokasi tidak ditemukan di Google Maps atau terlalu jauh (> 5km) dari Kantor Desa, sistem otomatis beralih menggunakan data Peta Digital (SHP/GeoJSON).
+    *   **Exact Match**: Mencari koordinat RT/RW spesifik jika alamat memuat informasi RT/RW.
+    *   **Desa Match**: Menggunakan titik tengah desa jika RT/RW tidak spesifik.
+3.  **Validation**: Memastikan lokasi yang ditemukan masuk akal (dalam radius tertentu dari kantor desa).
 
-Aplikasi ini bertindak sebagai **API service** yang dapat diintegrasikan dengan **n8n** atau aplikasi lain.
-
----
-
-## ✨ Fitur
-- Geocoding alamat otomatis (alamat → latitude & longitude)
-- Menggunakan Google Maps via Selenium (tanpa API key)
-- Dapat digunakan sebagai API lokal
-- Siap diintegrasikan dengan n8n
-- Menghitung jarak lokasi usaha ke titik tengah desa
-- Validasi lokasi berdasarkan jarak
-
----
-
-## ⚙️ Cara Menjalankan
-
-Jalankan perintah berikut di Terminal / CMD:
-
-```bash
-python -m venv venv
-````
-```bash
-venv\Scripts\activate
-````
-```bash
-pip install selenium
-````
-```bash
-pip install webdriver-manager
-````
-```bash
-pip install fastapi uvicorn
-````
-```bash
-uvicorn app:app --host 0.0.0.0 --port 8000
-````
-
-Setelah dijalankan, API dapat diakses melalui:
+## Struktur Project
 
 ```
-http://localhost:8000
+geocode3321/
+├── input/                  # Folder tempat menaruh file Excel & GeoJSON
+├── output/                 # Hasil output akan muncul di sini
+├── services/               # Modul logika (Geocoding, Spatial, Data)
+├── config.py               # Konfigurasi (Limit baris, Nama Kolom, Radius)
+├── main.py                 # Script utama untuk menjalankan program
+├── penjelasan_metodologi.md # Penjelasan detail tentang status output
+├── rules.md
+└── requirements.txt
 ```
 
----
+## Cara Penggunaan
 
-## 🔌 Spesifikasi API
+1.  Pastikan Python sudah terinstall.
+2.  Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3.  Siapkan file input di folder `input/`:
+    *   Excel Data Usaha (Format kolom sesuaikan di `config.py`)
+    *   GeoJSON/SHP Batas Wilayah (RT/RW)
+4.  Jalankan program:
+    ```bash
+    python main.py
+    ```
+5.  Hasil akan tersimpan di folder `output/`.
 
-### Endpoint
+## Konfigurasi
+Anda dapat mengubah pengaturan di file `config.py`, seperti:
+*   `ROW_LIMIT`: Batas jumlah baris yang diproses.
+*   `RADIUS_KM`: Radius toleransi dari kantor desa.
+*   `MAX_BROWSERS`: Jumlah browser yang dibuka bersamaan.
 
-```
-http://localhost:8000/geocode
-```
-
-### Metode
-
-```
-POST
-```
-
----
-
-## 📤 Payload (Request)
-
-Format: **JSON**
-
-```json
-{
-  "query": "nama usaha + alamat usaha",
-  "desa": "nama desa",
-  "kecamatan": "nama kecamatan",
-  "kabupaten": "nama kabupaten"
-}
-```
-
-Keterangan:
-
-* **query** : Nama usaha + alamat lengkap
-* **desa** : Nama desa lokasi usaha
-* **kecamatan** : Nama kecamatan
-* **kabupaten** : Nama kabupaten
-
-Contoh: **JSON**
-
-```json
-{
-  "query": "BPS Kabupaten Jepara",
-  "desa": "demaan",
-  "kecamatan": "jepara",
-  "kabupaten": "jepara"
-}
-```
----
-
-## 📥 Response
-
-Format: **JSON**
-
-```json
-{
-    "lat": "-6.6004219",
-    "long": "110.6632625",
-    "jarak": 0.369,
-    "valid": "Y"
-}
-```
-
-Keterangan:
-
-* **lat** : Latitude hasil geocoding
-* **long** : Longitude hasil geocoding
-* **jarak** : Jarak titik usaha dari titik tengah desa (dalam km)
-* **valid** :
-
-  * `Y` = lokasi valid
-  * `N` = lokasi tidak valid
-
----
-
-## 🧩 Integrasi dengan n8n
-
-Gunakan node **HTTP Request** dengan konfigurasi:
-
-* Method: `POST`
-* URL: `http://localhost:8000/geocode`
-* Body Type: `JSON`
-* Isi payload sesuai format di atas
-
----
-
-## ⚠️ Catatan
-
-* Pastikan Google Chrome terinstal
-* Selenium akan membuka browser secara otomatis (headless)
-* Gunakan dengan bijak untuk menghindari deteksi sebagai bot
+## Lisensi
+Private Use for BPS Kabupaten Demak (3321).

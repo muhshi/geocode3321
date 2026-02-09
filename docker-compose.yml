@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  geocoder_app:
+    build: .
+    container_name: geocoder_python
+    ports:
+      - "8800:8800"
+    restart: always
+    # Penting: Memory shared untuk Chrome agar tidak crash
+    shm_size: '2gb'
+    environment:
+      - PYTHONUNBUFFERED=1

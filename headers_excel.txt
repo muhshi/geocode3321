@@ -1,0 +1,15 @@
+idsbr
+nama_usaha
+alamat_usaha
+kdkec
+kddesa
+nmkec
+nmdesa
+kegiatan_usaha
+status_perusahaan
+perusahaan_id
+latitude
+longitude
+Nama Petugas GC
+Update Nama Usaha
+Update Alamat Usaha
