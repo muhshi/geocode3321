@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# Data (Ignore huge files or temp files)
+input/~$*
+output/
+
+# IDE
+.vscode/
+.idea/
