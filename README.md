@@ -26,19 +26,36 @@ geocode3321/
 
 ## Cara Penggunaan
 
-1.  Pastikan Python sudah terinstall.
-2.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  Siapkan file input di folder `input/`:
-    *   Excel Data Usaha (Format kolom sesuaikan di `config.py`)
-    *   GeoJSON/SHP Batas Wilayah (RT/RW)
-4.  Jalankan program:
-    ```bash
-    python main.py
-    ```
-5.  Hasil akan tersimpan di folder `output/`.
+### 1. Persiapan Awal
+Pastikan Python sudah terinstall di komputer Anda. Disarankan menggunakan **Virtual Environment** agar tidak bentrok dengan library lain.
+
+### 2. Setup Virtual Environment (Windows)
+Buka terminal (PowerShell atau CMD) di folder project, lalu jalankan:
+```powershell
+# Membuat virtual environment bernama .venv
+python -m venv .venv
+
+# Aktivasi Virtual Environment
+# Jika menggunakan PowerShell:
+.\.venv\Scripts\Activate.ps1
+
+# Jika menggunakan Command Prompt (CMD):
+.\.venv\Scripts\activate.bat
+```
+*Tanda `(.venv)` akan muncul di depan baris perintah jika aktivasi berhasil.*
+
+### 3. Install Dependencies
+Setelah venv aktif, install library yang dibutuhkan:
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Menjalankan Program
+Pastikan file input sudah siap di folder `input/`, lalu jalankan:
+```bash
+python main.py
+```
+Hasil akan tersimpan secara otomatis di folder `output/`.
 
 ## Konfigurasi
 Anda dapat mengubah pengaturan di file `config.py`, seperti:
