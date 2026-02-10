@@ -1,15 +1,1 @@
-idsbr
-nama_usaha
-alamat_usaha
-kdkec
-kddesa
-nmkec
-nmdesa
-kegiatan_usaha
-status_perusahaan
-perusahaan_id
-latitude
-longitude
-Nama Petugas GC
-Update Nama Usaha
-Update Alamat Usaha
+Error reading Excel: [Errno 2] No such file or directory: 'input/SBR 3321 tahun 2026.xlsx'

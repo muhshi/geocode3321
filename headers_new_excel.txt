@@ -1,0 +1,73 @@
+Total rows: 10322
+0: idsbr
+1: perusahaan_id
+2: nama_usaha
+3: alamat_usaha
+4: kegiatan_usaha
+5: skala_usaha
+6: status_perusahaan
+7: sumber_data
+8: kode_wilayah
+9: kdprov
+10: nmprov
+11: kdkab
+12: nmkab
+13: kdkec
+14: nmkec
+15: kddesa
+16: nmdesa
+17: latitude
+18: longitude
+19: latlong_status
+20: gcid
+21: gcs_result
+22: gc_username
+23: latitude_gc
+24: longitude_gc
+25: latlong_status_gc
+26: skor_kalo
+27: rank_nama
+28: rank_alamat
+29: history_ref_profiling_id
+30: allow_cancel
+31: allow_edit
+32: allow_flagging
+33: nama_usaha_gc
+34: alamat_usaha_gc
+
+Sample values row 0:
+  idsbr: 2486963
+  perusahaan_id: eyJpdiI6IitYZ0JoNTRGbFhSNUQyTjhCUWs2WHc9PSIsInZhbHVlIjoiQnJpV2k4a1pIMWxDcWFtU3lPeDluUT09IiwibWFjIjoiMTQyOTlhY2U3OTZhMjc5NjE3MWM4YTYyMmRmODYyNjllNWVkYzlkYTVkNjQ3MWRlMjczN2YzMmU2MTlhNTc1ZiIsInRhZyI6IiJ9
+  nama_usaha: RODHA KOMPAD JAYA LOGISTIK
+  alamat_usaha: WRINGINJAJAR, DJAGO
+  kegiatan_usaha: [Kegiatan Usaha: -, Kategori: H, KBLI: 52292]
+  skala_usaha: UMKM
+  status_perusahaan: Aktif
+  sumber_data: Dir Pajak
+  kode_wilayah: 3321010
+  kdprov: 33
+  nmprov: JAWA TENGAH
+  kdkab: 21
+  nmkab: DEMAK
+  kdkec: 10
+  nmkec: MRANGGEN
+  kddesa: nan
+  nmdesa: nan
+  latitude: nan
+  longitude: nan
+  latlong_status: invalid
+  gcid: nan
+  gcs_result: nan
+  gc_username: nan
+  latitude_gc: nan
+  longitude_gc: nan
+  latlong_status_gc: invalid
+  skor_kalo: nan
+  rank_nama: nan
+  rank_alamat: nan
+  history_ref_profiling_id: 2025-10-25 17:00:00
+  allow_cancel: 0
+  allow_edit: 0
+  allow_flagging: 1
+  nama_usaha_gc: nan
+  alamat_usaha_gc: nan
